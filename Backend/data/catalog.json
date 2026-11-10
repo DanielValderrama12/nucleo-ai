@@ -1,0 +1,23 @@
+[
+  { "id": 1, "name": "Arroz blanco 1 kg", "category": "Granos", "price": 4200, "stock": 80, "promo_price": null },
+  { "id": 2, "name": "Arroz integral 500 g", "category": "Granos", "price": 3800, "stock": 25, "promo_price": null },
+  { "id": 3, "name": "Frijol cargamanto 500 g", "category": "Granos", "price": 6900, "stock": 40, "promo_price": null },
+  { "id": 4, "name": "Lentejas 500 g", "category": "Granos", "price": 3500, "stock": 0, "promo_price": null },
+  { "id": 5, "name": "Leche entera 1 L", "category": "Lácteos", "price": 4200, "stock": 60, "promo_price": null },
+  { "id": 6, "name": "Leche deslactosada 1 L", "category": "Lácteos", "price": 5200, "stock": 30, "promo_price": null },
+  { "id": 7, "name": "Queso campesino 500 g", "category": "Lácteos", "price": 9800, "stock": 15, "promo_price": 8500 },
+  { "id": 8, "name": "Yogur natural 1 L", "category": "Lácteos", "price": 7400, "stock": 0, "promo_price": null },
+  { "id": 9, "name": "Huevos AA x30", "category": "Huevos", "price": 18500, "stock": 20, "promo_price": null },
+  { "id": 10, "name": "Pan tajado 450 g", "category": "Panadería", "price": 5600, "stock": 35, "promo_price": 4900 },
+  { "id": 11, "name": "Aceite de girasol 1 L", "category": "Despensa", "price": 12900, "stock": 50, "promo_price": null },
+  { "id": 12, "name": "Azúcar blanca 1 kg", "category": "Despensa", "price": 4800, "stock": 70, "promo_price": null },
+  { "id": 13, "name": "Café molido 250 g", "category": "Despensa", "price": 9900, "stock": 45, "promo_price": 8900 },
+  { "id": 14, "name": "Pasta espagueti 250 g", "category": "Despensa", "price": 2900, "stock": 90, "promo_price": null },
+  { "id": 15, "name": "Pechuga de pollo 1 kg", "category": "Carnes", "price": 16900, "stock": 22, "promo_price": null },
+  { "id": 16, "name": "Carne molida de res 500 g", "category": "Carnes", "price": 14500, "stock": 18, "promo_price": null },
+  { "id": 17, "name": "Tomate chonto 1 kg", "category": "Frutas y verduras", "price": 4500, "stock": 40, "promo_price": null },
+  { "id": 18, "name": "Banano 1 kg", "category": "Frutas y verduras", "price": 3200, "stock": 55, "promo_price": 2800 },
+  { "id": 19, "name": "Papa pastusa 2 kg", "category": "Frutas y verduras", "price": 6500, "stock": 30, "promo_price": null },
+  { "id": 20, "name": "Jabón de loza 500 g", "category": "Aseo", "price": 5400, "stock": 28, "promo_price": null },
+  { "id": 21, "name": "Papel higiénico x12", "category": "Aseo", "price": 21900, "stock": 16, "promo_price": 19500 }
+]

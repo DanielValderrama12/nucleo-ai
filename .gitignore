@@ -1,0 +1,16 @@
+# Python
+backend/.venv/
+__pycache__/
+*.pyc
+
+# Datos de contactos (información personal)
+backend/data/contacts.jsonl
+
+# Claves y variables privadas
+.env
+.env.*
+*.env.local
+
+# Sistema y editor
+.DS_Store
+Thumbs.db
