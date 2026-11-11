@@ -1,4 +1,5 @@
 from contextlib import asynccontextmanager
+import os
 
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -20,10 +21,17 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="NÚCLEO AI - API", version="0.4.0", lifespan=lifespan)
 
+def allowed_origins() -> list[str]:
+    """Orígenes permitidos: localhost y los de la variable ALLOWED_ORIGINS."""
+    extra = os.environ.get("ALLOWED_ORIGINS", "")
+    origins = [o.strip().rstrip("/") for o in extra.split(",") if o.strip()]
+    return ["http://localhost:3000", "http://127.0.0.1:3000", *origins]
+
+
 # Permite que la página web consulte este servidor
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=allowed_origins(),
     allow_methods=["*"],
     allow_headers=["*"],
 )
