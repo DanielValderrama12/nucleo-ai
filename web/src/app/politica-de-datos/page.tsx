@@ -57,7 +57,6 @@ export default function PoliticaDeDatos() {
         <Section title="1. Responsable del tratamiento">
           <ul className="list-disc space-y-1 pl-5">
             <li>Nombre o razón social: {COMPANY.legalName}</li>
-            <li>Identificación: {COMPANY.idNumber}</li>
             <li>Ciudad: {COMPANY.city}</li>
             <li>Correo para solicitudes: {COMPANY.email}</li>
           </ul>
