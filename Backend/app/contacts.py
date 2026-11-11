@@ -1,12 +1,19 @@
-import json
-from datetime import datetime, timezone
-from pathlib import Path
-
-CONTACTS_PATH = Path(__file__).resolve().parent.parent / "data" / "contacts.jsonl"
+from app.db import get_connection
 
 
 def save_contact(data: dict) -> None:
-    """Agrega un contacto como una línea JSON al archivo contacts.jsonl."""
-    record = {"received_at": datetime.now(timezone.utc).isoformat(), **data}
-    with open(CONTACTS_PATH, "a", encoding="utf-8") as f:
-        f.write(json.dumps(record, ensure_ascii=False) + "\n")
+    """Guarda un contacto en la tabla contacts de PostgreSQL."""
+    with get_connection() as conn:
+        conn.execute(
+            """
+            INSERT INTO contacts (name, business, email, phone, message)
+            VALUES (%s, %s, %s, %s, %s)
+            """,
+            (
+                data["name"],
+                data["business"],
+                data["email"],
+                data["phone"],
+                data["message"],
+            ),
+        )

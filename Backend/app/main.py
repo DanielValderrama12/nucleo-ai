@@ -1,10 +1,24 @@
-from fastapi import FastAPI
+from contextlib import asynccontextmanager
+
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from app import agent, catalog, contacts
+from app import agent, catalog, contacts, db
+from app.ratelimit import RateLimiter
 
-app = FastAPI(title="NÚCLEO AI - API", version="0.3.0")
+# Chat: 20 mensajes por minuto. Contacto: 5 envíos por hora.
+chat_limiter = RateLimiter(max_requests=20, window_seconds=60)
+contact_limiter = RateLimiter(max_requests=5, window_seconds=3600)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    db.init_db()  # crea la tabla de contactos si no existe
+    yield
+
+
+app = FastAPI(title="NÚCLEO AI - API", version="0.4.0", lifespan=lifespan)
 
 # Permite que la página web consulte este servidor
 app.add_middleware(
@@ -68,7 +82,11 @@ def promotions():
     return catalog.get_promotions()
 
 
-@app.post("/chat", response_model=ChatResponse)
+@app.post(
+    "/chat",
+    response_model=ChatResponse,
+    dependencies=[Depends(chat_limiter)],
+)
 def chat(request: ChatRequest):
     reply, cart = agent.respond(
         request.message, [item.model_dump() for item in request.cart]
@@ -76,7 +94,7 @@ def chat(request: ChatRequest):
     return {"reply": reply, "cart": cart}
 
 
-@app.post("/contact")
+@app.post("/contact", dependencies=[Depends(contact_limiter)])
 def contact(request: ContactRequest):
     if request.website:
         return {"ok": True}  # probablemente un bot: fingimos éxito sin guardar

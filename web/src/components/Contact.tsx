@@ -3,6 +3,7 @@
 import { useState } from "react";
 import SectionHeading from "./SectionHeading";
 import { whatsappLink } from "@/lib/config";
+import Link from "next/link";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
@@ -166,11 +167,21 @@ export default function Contact() {
                   className="hidden"
                 />
 
-                <label className="flex items-start gap-3 text-xs leading-relaxed text-slate-400">
-                  <input type="checkbox" required className="mt-0.5 accent-cyan-400" />
-                  Acepto que NÚCLEO AI use estos datos para contactarme sobre mi
-                  solicitud.
-                </label>
+               <label className="flex items-start gap-3 text-xs leading-relaxed text-slate-400">
+  <input type="checkbox" required className="mt-0.5 accent-cyan-400" />
+  <span>
+    Acepto que NÚCLEO AI trate mis datos personales para contactarme sobre mi
+    solicitud, según la{" "}
+    <Link
+      href="/politica-de-datos"
+      target="_blank"
+      className="text-accent underline"
+    >
+      política de tratamiento de datos
+    </Link>
+    .
+  </span>
+</label>
 
                 {status === "error" && (
                   <p className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">

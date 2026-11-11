@@ -6,3 +6,12 @@ export const WHATSAPP_MESSAGE =
 export function whatsappLink(): string {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 }
+
+// Datos del responsable del tratamiento. Completa lo que está entre corchetes
+// antes de publicar la página.
+export const COMPANY = {
+  legalName: "[COMPLETAR: Daniel Valderrama Rodriguez]",
+  idNumber: "[COMPLETAR: 1018242778]",
+  city: "[COMPLETAR: Medellin, Colombia]",
+  email: "[COMPLETAR: danielvalderrama.r08@gmail.com]",
+};

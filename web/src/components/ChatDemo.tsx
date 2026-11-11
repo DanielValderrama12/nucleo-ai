@@ -47,6 +47,26 @@ export default function ChatDemo() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message, cart }),
       });
+            if (res.status === 429) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "bot",
+            text: "Estás escribiendo muy rápido. Espera un momento e inténtalo de nuevo.",
+          },
+        ]);
+        return;
+      }
+            if (res.status === 429) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "bot",
+            text: "Estás escribiendo muy rápido. Espera un momento e inténtalo de nuevo.",
+          },
+        ]);
+        return;
+      }
       if (!res.ok) throw new Error(`Error ${res.status}`);
       const data = await res.json();
       setMessages((prev) => [...prev, { role: "bot", text: data.reply }]);
